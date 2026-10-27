@@ -1,5 +1,6 @@
 'use client';
 
+import { sanitizePostContent } from '@gitroom/helpers/utils/sanitize.post.content';
 import { FC, useCallback } from 'react';
 import {
   PostComment,
@@ -38,7 +39,7 @@ const RenderRedditComponent: FC<{
       return (
         <div
           dir="auto"
-          dangerouslySetInnerHTML={{ __html: firstPost?.content }}
+          dangerouslySetInnerHTML={{ __html: sanitizePostContent(firstPost?.content) }}
           style={{
             whiteSpace: 'pre-wrap',
             fontSize: '14px',
@@ -141,7 +142,7 @@ const RedditPreview: FC = (props) => {
                       </div>
                       <div
                         dir="auto"
-                        dangerouslySetInnerHTML={{ __html: p.text }}
+                        dangerouslySetInnerHTML={{ __html: sanitizePostContent(p.text) }}
                         style={{
                           whiteSpace: 'pre-wrap',
                         }}
