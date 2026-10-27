@@ -23,10 +23,10 @@ export class PoliciesGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request: Request = context.switchToHttp().getRequest();
     if (
-      request.path.indexOf('/auth') > -1 ||
-      request.path.indexOf('/auth') > -1 ||
-      request.path.indexOf('/integrations/social-connect') > -1 ||
-      request.path.indexOf('/integrations/provider') > -1
+      request.path === '/auth' || request.path.startsWith('/auth/') ||
+      request.path === '/auth' || request.path.startsWith('/auth/') ||
+      request.path.startsWith('/integrations/social-connect') ||
+      request.path.startsWith('/integrations/provider')
     ) {
       return true;
     }
