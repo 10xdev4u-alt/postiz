@@ -1,5 +1,6 @@
 'use client';
 
+import { sanitizePostContent } from '@gitroom/helpers/utils/sanitize.post.content';
 import React, {
   FC,
   useCallback,
@@ -183,7 +184,7 @@ const Message: FC<UserMessageProps> = (props) => {
   return (
     <div
       className="copilotKitMessage copilotKitUserMessage min-w-[300px]"
-      dangerouslySetInnerHTML={{ __html: convertContentToImagesAndVideo }}
+      dangerouslySetInnerHTML={{ __html: sanitizePostContent(convertContentToImagesAndVideo) }}
     />
   );
 };

@@ -1,3 +1,4 @@
+import { sanitizePostContent } from '@gitroom/helpers/utils/sanitize.post.content';
 import { FC } from 'react';
 import { useIntegration } from '@gitroom/frontend/components/launches/helpers/use.integration';
 import { useLaunchStore } from '@gitroom/frontend/components/new-launch/store';
@@ -143,7 +144,7 @@ export const YoutubePreview: FC<{
       <div
         dir="auto"
         className="bg-youtubeBgAction rounded-[12px] p-[12px] text-[12px] font-[400] whitespace-pre-line"
-        dangerouslySetInnerHTML={{ __html: renderContent?.[0]?.text }}
+        dangerouslySetInnerHTML={{ __html: sanitizePostContent(renderContent?.[0]?.text) }}
       />
     </div>
   );

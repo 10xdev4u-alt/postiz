@@ -1,3 +1,4 @@
+import { sanitizePostContent } from '@gitroom/helpers/utils/sanitize.post.content';
 import { FC } from 'react';
 import { useIntegration } from '@gitroom/frontend/components/launches/helpers/use.integration';
 import { stripHtmlValidation } from '@gitroom/helpers/utils/strip.html.validation';
@@ -154,7 +155,7 @@ export const PinterestPreview: FC<{
       <div
         dir="auto"
         className="mt-[13px] whitespace-pre-line"
-        dangerouslySetInnerHTML={{ __html: renderContent?.[0]?.text || '' }}
+        dangerouslySetInnerHTML={{ __html: sanitizePostContent(renderContent?.[0]?.text || '') }}
       ></div>
     </div>
   );

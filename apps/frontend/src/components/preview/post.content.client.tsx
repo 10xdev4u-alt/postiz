@@ -1,5 +1,6 @@
 'use client';
 
+import { sanitizePostContent } from '@gitroom/helpers/utils/sanitize.post.content';
 import {
   FC,
   MouseEvent,
@@ -320,7 +321,7 @@ export const PostContentClient: FC<{ postId: string; html: string }> = ({
             setActiveThread({ id, source: 'mark' });
           }
         }}
-        dangerouslySetInnerHTML={{ __html: html }}
+        dangerouslySetInnerHTML={{ __html: sanitizePostContent(html) }}
       />
       {!!hint && !selection && !ownPending && (
         <div
